@@ -1,8 +1,8 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import Link from "next/link";
 import Image from "next/image";
+import { IPost } from "@/types/post";
 
-export default function BlogCard({ post }: { post: any }) {
+export default function BlogCard({ post }: { post: IPost }) {
   return (
     <Link
       href={`/blogs/${post.id}`}
@@ -12,7 +12,7 @@ export default function BlogCard({ post }: { post: any }) {
         {post.thumbnail ? (
           <div className="relative h-56 w-full overflow-hidden">
             <Image
-              src={post.thumbnail}
+              src={post?.thumbnail}
               alt={post.title}
               fill
               className="object-cover group-hover:scale-105 transition-transform duration-300"
