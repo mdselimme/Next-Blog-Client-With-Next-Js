@@ -47,7 +47,7 @@ export default async function BlogDetailsCard({ blog }: { blog: any }) {
         </div>
       )}
 
-      <article className="prose prose-lg max-w-none">
+      <article className="prose prose-lg max-w-none mt-4">
         <p>{blog.content}</p>
       </article>
     </main>
