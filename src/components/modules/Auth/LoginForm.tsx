@@ -15,6 +15,8 @@ import {
 } from "@/components/ui/form";
 import Image from "next/image";
 import { signIn } from "next-auth/react";
+import { login } from "@/actions/auth";
+import { toast } from "sonner";
 
 type LoginFormValues = {
   email: string;
@@ -29,8 +31,15 @@ export default function LoginForm() {
     },
   });
 
-  const onSubmit = (values: LoginFormValues) => {
-    console.log("Login submitted:", values);
+  const onSubmit = async (values: LoginFormValues) => {
+    try {
+      const res = await login(values);
+      if (res?.id) {
+        toast.success("Login Successfully.");
+      }
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   //   const handleSocialLogin = (provider: "google" | "github") => {
